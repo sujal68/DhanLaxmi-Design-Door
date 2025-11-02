@@ -1,729 +1,180 @@
-/* ============================================
-   FORM SECTION RESPONSIVE MEDIA QUERIES
-   ============================================ */
+@media screen and (max-width: 1024px) {
+    .showcase {
+        max-width: 1200px !important;
+        width: 96%;
+        gap: 10px;
+    }
 
-/* Large Desktop - 1400px and above */
-@media (max-width: 1400px) {
-    .contact-section {
-        max-width: 95%;
+    .left-content h2 {
+        font-size: 2rem !important;
+    }
+
+    .veneer-grid {
+        max-width: 115% !important;
+        gap: 7px !important;
+    }
+
+    .veneer-sample {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .enquire-btn {
+        padding: 0px 0px !important;
+        font-size: 14px !important;
+    }
+
+    .door-inner {
+        width: 85% !important;
+        height: 98% !important;
+    }
+
+    .form-side {
+        padding: 18px 18px !important;
+        max-height: 100vh !important;
+    }
+
+    .custom-cursor,
+    .cursor-follower {
+        display: none !important;
+    }
+
+    #customVideo {
+        width: 480px !important;
+    }
+
+    .door-title p {
+        width: 80% !important;
+        margin: 0px auto !important;
     }
 }
 
-/* Desktop - 1200px */
-@media (max-width: 1200px) {
+@media screen and (max-width:970px) {
     .contact-section {
-        max-width: 95%;
-        grid-template-columns: 0.8fr 1fr;
+        grid-template-columns: 0.9fr 1fr !important;
+        display: block !important;
+        max-height: none !important;
+        margin-bottom: 30px !important;
     }
 
     .brand-side {
-        padding: 30px 25px;
+        overflow: visible !important;
     }
 
-    .form-side {
-        padding: 30px 25px;
-    }
-
-    .logo-section {
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-
-    .logo-text h1 {
-        font-size: 22px;
-    }
-
-    .logo-text span {
-        font-size: 9px;
-    }
-
-    .tagline h2 {
-        font-size: 16px;
-    }
-
-    .tagline p {
-        font-size: 12px;
-    }
-
-    .form-header h2 {
-        font-size: 28px;
-    }
-
-    .contact-item span {
-        font-size: 14px;
+    .form-segment {
+        margin-bottom: 10px !important;
     }
 }
 
-/* Tablet - 968px */
-@media (max-width: 968px) {
-    .form-segment {
-        margin: 60px 0px !important;
+@media screen and (max-width:810px) {
+    .showcase {
+        display: block !important;
+        margin-top: 10px !important;
     }
 
-    .contact-section {
-        grid-template-columns: 1fr;
-        max-height: none;
-        margin: 60px auto;
+    .right-content {
+        height: 50% !important;
     }
 
-    .brand-side {
-        padding: 35px 30px;
-        order: 2;
+    /* .door-frame {
+        width: 300px !important;
+        height: 526px !important;
+    } */
+
+    .door-display {
+        width: 80% !important;
     }
 
-    .form-side {
-        padding: 35px 30px;
-        order: 1;
-        max-height: none;
+    .door-inner {
+        width: 90% !important;
+        height: 104% !important;
     }
 
-    .form-header h2 {
-        font-size: 26px;
+    .container2 {
+        height: 170vh !important;
     }
 
-    .brand-content {
-        max-width: 600px;
-        margin: 0 auto;
+    .veneer-sample {
+        width: 75px !important;
+        height: 75px !important;
     }
 
-    .action-buttons {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .btn {
-        flex: 1 1 45%;
-        min-width: 140px;
+    .veneer-grid {
+        max-width: 100% !important;
+        gap: 30px !important;
     }
 }
 
-/* Mobile Large - 768px */
-@media (max-width: 768px) {
-    .form-segment {
-        margin: 50px 0px !important;
-    }
-
-    .contact-section {
-        border-radius: 16px;
-        max-width: 95%;
-        margin: 40px auto;
-    }
-
-    .brand-side,
-    .form-side {
-        padding: 30px 20px;
-    }
-
-    .logo-section {
-        justify-content: center;
-        margin-bottom: 18px;
-    }
-
-    .logo-icon {
-        width: 42px;
-        height: 42px;
-    }
-
-    .logo-icon img {
-        width: 32px;
-        height: 32px;
-    }
-
-    .logo-text h1 {
-        font-size: 20px;
-    }
-
-    .logo-text span {
-        font-size: 9px;
-        letter-spacing: 2.5px;
-    }
-
-    .tagline {
-        padding: 15px;
-        margin-bottom: 18px;
-    }
-
-    .tagline h2 {
-        font-size: 15px;
-        margin-bottom: 8px;
-    }
-
-    .tagline p {
-        font-size: 12px;
-        line-height: 1.5;
-    }
-
-    .contact-info {
-        margin: 18px 0;
-    }
-
-    .contact-item {
-        margin-bottom: 12px;
-    }
-
-    .contact-icon {
-        width: 35px;
-        height: 35px;
-    }
-
-    .contact-item span {
-        font-size: 13px;
-    }
-
-    .action-buttons {
-        gap: 10px;
-        margin-top: 20px;
-    }
-
-    .btn {
-        padding: 11px 16px;
-        font-size: 12px;
-    }
-
-    .btn i {
-        font-size: 16px;
-    }
-
-    /* Form Side */
-    .form-header p {
-        font-size: 11px;
-    }
-
-    .form-header h2 {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-
-    .orange-line {
-        width: 50px;
-        height: 2.5px;
-    }
-
-    .form-group {
-        margin-bottom: 13px;
-    }
-
-    .form-input,
-    .form-select,
-    .form-textarea {
-        padding: 11px 14px;
-        font-size: 13px;
-    }
-
-    .country-selector {
-        width: 85px;
-        padding: 11px 6px;
-    }
-
-    .country-code-text {
-        font-size: 12px;
-    }
-
-    .country-dropdown-menu {
-        width: 220px;
-    }
-
-    .dropdown-selected {
-        padding: 11px 14px;
-        font-size: 13px;
-    }
-
-    .dropdown-option {
-        padding: 9px 14px;
-        font-size: 13px;
-    }
-
-    .form-textarea {
-        min-height: 75px;
-    }
-
-    .submit-btn {
-        padding: 12px;
-        font-size: 14px;
-    }
-
-    .success-message {
-        padding: 13px;
-        font-size: 12px;
-    }
-
-    .error-message {
-        font-size: 10px;
+@media screen and (max-width:769px) {
+    .carousel-item video {
+        height: 300px !important;
     }
 }
 
-/* Mobile Medium - 576px */
-@media (max-width: 576px) {
-    .form-segment {
-        margin: 40px 0px !important;
-        padding: 0 10px;
+@media screen and (max-width:650px) {
+    .veneer-grid {
+        max-width: 110% !important;
     }
 
-    .contact-section {
-        border-radius: 12px;
-        max-width: 98%;
-    }
-
-    .brand-side,
-    .form-side {
-        padding: 25px 18px;
-    }
-
-    .logo-section {
-        gap: 8px;
-        margin-bottom: 15px;
-    }
-
-    .logo-icon {
-        width: 38px;
-        height: 38px;
-    }
-
-    .logo-icon img {
-        width: 28px;
-        height: 28px;
-    }
-
-    .logo-text h1 {
-        font-size: 18px;
-    }
-
-    .logo-text span {
-        font-size: 8px;
-        letter-spacing: 2px;
-    }
-
-    .tagline {
-        padding: 12px;
-        margin-bottom: 15px;
-    }
-
-    .tagline h2 {
-        font-size: 14px;
-        margin-bottom: 6px;
-    }
-
-    .tagline p {
-        font-size: 11px;
-    }
-
-    .contact-info {
-        margin: 15px 0;
-    }
-
-    .contact-item {
-        margin-bottom: 10px;
-        gap: 10px;
-    }
-
-    .contact-icon {
-        width: 32px;
-        height: 32px;
-    }
-
-    .contact-icon i {
-        font-size: 16px;
-    }
-
-    .contact-item span {
-        font-size: 12px;
-    }
-
-    .action-buttons {
-        flex-direction: column;
-        gap: 8px;
-        margin-top: 18px;
-    }
-
-    .btn {
-        width: 100%;
-        padding: 10px 14px;
-        font-size: 12px;
-    }
-
-    /* Form Side */
-    .form-header {
-        margin-bottom: 20px;
-    }
-
-    .form-header p {
-        font-size: 10px;
-        margin-bottom: 6px;
-    }
-
-    .form-header h2 {
-        font-size: 22px;
-        margin-bottom: 8px;
-    }
-
-    .orange-line {
-        width: 45px;
-        height: 2px;
-    }
-
-    .form-group {
-        margin-bottom: 12px;
-    }
-
-    .form-input,
-    .form-select,
-    .form-textarea {
-        padding: 10px 12px;
-        font-size: 12px;
-        border-radius: 8px;
-    }
-
-    .phone-input-wrapper {
-        gap: 8px;
-    }
-
-    .country-selector {
-        width: 80px;
-        padding: 10px 5px;
-        border-radius: 8px;
-    }
-
-    .country-flag {
-        font-size: 16px;
-    }
-
-    .country-code-text {
-        font-size: 11px;
-    }
-
-    .dropdown-arrow {
-        font-size: 8px;
-    }
-
-    .country-dropdown-menu {
-        width: 200px;
-        max-height: 180px;
-        border-radius: 10px;
-    }
-
-    .country-option {
-        padding: 8px 12px;
-    }
-
-    .country-option-flag {
-        font-size: 16px;
-    }
-
-    .country-option-name {
-        font-size: 12px;
-    }
-
-    .country-option-code {
-        font-size: 11px;
-    }
-
-    .dropdown-selected {
-        padding: 10px 12px;
-        font-size: 12px;
-        border-radius: 8px;
-    }
-
-    .dropdown-arrow {
-        font-size: 8px;
-    }
-
-    .dropdown-menu {
-        border-radius: 10px;
-        max-height: 180px;
-    }
-
-    .dropdown-option {
-        padding: 8px 12px;
-        font-size: 12px;
-    }
-
-    .form-textarea {
-        min-height: 70px;
-    }
-
-    .submit-btn {
-        padding: 11px;
-        font-size: 13px;
-        border-radius: 20px;
-    }
-
-    .success-message {
-        padding: 12px;
-        font-size: 11px;
-        border-radius: 8px;
-    }
-
-    .error-message {
-        font-size: 9px;
+    .right-content {
+        height: 43% !important;
     }
 }
 
-/* Mobile Small - 480px */
-@media (max-width: 480px) {
-    .form-segment {
-        margin: 30px 0px !important;
-        padding: 0 5px;
+@media screen and (max-width:630px) {
+    .veneer-grid {
+        max-width: 95% !important;
     }
 
-    .contact-section {
-        border-radius: 10px;
-        max-width: 100%;
+    .right-content {
+        height: 43% !important;
     }
 
-    .brand-side,
-    .form-side {
-        padding: 20px 15px;
-    }
-
-    .logo-section {
-        gap: 6px;
-        margin-bottom: 12px;
-    }
-
-    .logo-icon {
-        width: 35px;
-        height: 35px;
-        border-radius: 8px;
-    }
-
-    .logo-icon img {
-        width: 25px;
-        height: 25px;
-    }
-
-    .logo-text h1 {
-        font-size: 16px;
-        letter-spacing: 1.5px;
-    }
-
-    .logo-text span {
-        font-size: 7px;
-        letter-spacing: 1.5px;
-    }
-
-    .tagline {
-        padding: 10px;
-        margin-bottom: 12px;
-        border-radius: 8px;
-    }
-
-    .tagline h2 {
-        font-size: 13px;
-        margin-bottom: 5px;
-    }
-
-    .tagline p {
-        font-size: 10px;
-    }
-
-    .contact-info {
-        margin: 12px 0;
-    }
-
-    .contact-item {
-        margin-bottom: 8px;
-        gap: 8px;
-    }
-
-    .contact-icon {
-        width: 30px;
-        height: 30px;
-        border-radius: 6px;
-    }
-
-    .contact-icon i {
-        font-size: 14px;
-    }
-
-    .contact-item span {
-        font-size: 11px;
-    }
-
-    .action-buttons {
-        gap: 6px;
-        margin-top: 15px;
-    }
-
-    .btn {
-        padding: 9px 12px;
-        font-size: 11px;
-        border-radius: 8px;
-    }
-
-    .btn i {
-        font-size: 14px;
-    }
-
-    /* Form Side */
-    .form-header {
-        margin-bottom: 18px;
-    }
-
-    .form-header p {
-        font-size: 9px;
-        letter-spacing: 1.5px;
-    }
-
-    .form-header h2 {
-        font-size: 20px;
-    }
-
-    .orange-line {
-        width: 40px;
-        height: 2px;
-    }
-
-    .form-group {
-        margin-bottom: 10px;
-    }
-
-    .form-input,
-    .form-select,
-    .form-textarea {
-        padding: 9px 11px;
-        font-size: 11px;
-        border-radius: 7px;
-    }
-
-    .phone-input-wrapper {
-        gap: 6px;
-    }
-
-    .country-selector {
-        width: 75px;
-        padding: 9px 4px;
-        border-radius: 7px;
-    }
-
-    .country-flag {
-        font-size: 14px;
-    }
-
-    .country-code-text {
-        font-size: 10px;
-    }
-
-    .dropdown-arrow {
-        font-size: 7px;
-    }
-
-    .country-dropdown-menu {
-        width: 180px;
-        max-height: 160px;
-        border-radius: 8px;
-    }
-
-    .country-option {
-        padding: 7px 10px;
-    }
-
-    .country-option-flag {
-        font-size: 14px;
-    }
-
-    .country-option-name {
-        font-size: 11px;
-    }
-
-    .country-option-code {
-        font-size: 10px;
-    }
-
-    .dropdown-selected {
-        padding: 9px 11px;
-        font-size: 11px;
-        border-radius: 7px;
-    }
-
-    .dropdown-menu {
-        border-radius: 8px;
-        max-height: 160px;
-    }
-
-    .dropdown-option {
-        padding: 7px 10px;
-        font-size: 11px;
-    }
-
-    .form-textarea {
-        min-height: 65px;
-    }
-
-    .submit-btn {
-        padding: 10px;
-        font-size: 12px;
-        border-radius: 18px;
-    }
-
-    .success-message {
-        padding: 10px;
-        font-size: 10px;
-        border-radius: 7px;
-    }
-
-    .error-message {
-        font-size: 8.5px;
-        margin-top: 3px;
+    .container2 {
+        height: 195vh !important;
     }
 }
 
-/* Mobile Extra Small - 360px */
-@media (max-width: 360px) {
-    .form-segment {
-        margin: 20px 0px !important;
+@media screen and (max-width:575px) {
+    .container2 {
+        height: 214vh !important;
     }
 
-    .contact-section {
-        border-radius: 8px;
+    .swiper {
+        width: 84% !important;
     }
 
-    .brand-side,
-    .form-side {
-        padding: 18px 12px;
+    .door-display {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .swiper {
+        width: 48% !important;
     }
 
-    .logo-text h1 {
-        font-size: 15px;
+    .door-frame {
+        left: 70% !important;
+    }
+}
+
+@media screen and (max-width:469px) {
+    .veneer-sample {
+        width: 55px !important;
+        height: 55px !important;
     }
 
-    .logo-text span {
-        font-size: 6.5px;
+    .veneer-grid {
+        max-width: 105% !important;
+        gap: 18px !important;
     }
 
-    .tagline h2 {
-        font-size: 12px;
+    #customVideo {
+        width: 450px !important;
     }
 
-    .tagline p {
-        font-size: 9.5px;
-    }
-
-    .contact-item span {
-        font-size: 10.5px;
-    }
-
-    .form-header h2 {
-        font-size: 18px;
-    }
-
-    .form-input,
-    .form-select,
-    .form-textarea {
-        padding: 8px 10px;
-        font-size: 10.5px;
-    }
-
-    .country-selector {
-        width: 70px;
-        padding: 8px 3px;
-    }
-
-    .country-code-text {
-        font-size: 9.5px;
-    }
-
-    .submit-btn {
-        padding: 9px;
-        font-size: 11px;
+    .door-frame {
+        left: 75% !important;
     }
 }

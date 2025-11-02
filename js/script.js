@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // CUSTOM CURSOR EFFECTS (Global)
 // ============================================
 // Hide the default mouse cursor
-document.body.style.cursor = "none";
+// document.body.style.cursor = "none";
 
 const cursor = document.querySelector('.custom-cursor');
 const follower = document.querySelector('.cursor-follower');
@@ -613,34 +613,34 @@ counters.forEach(counter => {
     );
 });
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
-gsap.from(".form-side", {
-    opacity: 0,
-    y: 100,
-    duration: 1.3,
-    ease: "power3.out",
-    scrollTrigger: {
-        trigger: ".form-side",
-        start: "top 85%", // jab form screen me aaye
-    }
-});
+// gsap.from(".form-side", {
+//     opacity: 0,
+//     y: 100,
+//     duration: 1.3,
+//     ease: "power3.out",
+//     scrollTrigger: {
+//         trigger: ".form-side",
+//         start: "top 85%", // jab form screen me aaye
+//     }
+// });
 
-const formCard = document.querySelector('.form-side');
+// const formCard = document.querySelector('.form-side');
 
-formCard.addEventListener('mousemove', (e) => {
-    const rect = formCard.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const rotateY = ((x / rect.width) - 0.5) * 15;
-    const rotateX = ((y / rect.height) - 0.5) * -15;
+// formCard.addEventListener('mousemove', (e) => {
+//     const rect = formCard.getBoundingClientRect();
+//     const x = e.clientX - rect.left;
+//     const y = e.clientY - rect.top;
+//     const rotateY = ((x / rect.width) - 0.5) * 15;
+//     const rotateX = ((y / rect.height) - 0.5) * -15;
 
-    formCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-});
+//     formCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+// });
 
-formCard.addEventListener('mouseleave', () => {
-    formCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
-});
+// formCard.addEventListener('mouseleave', () => {
+//     formCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+// });
 
 
 // =====================

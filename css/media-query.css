@@ -178,3 +178,43 @@
         left: 75% !important;
     }
 }
+
+@media screen and (max-width:361px) {
+    .about-heading {
+        font-size: 19px !important;
+    }
+
+    #customVideo {
+        width: 360px !important;
+    }
+
+    .swiper {
+        width: 62% !important;
+    }
+
+    .door-inner {
+        width: 67% !important;
+        height: 88% !important;
+    }
+
+    .door-frame {
+        left: 86% !important;
+    }
+
+    .door-title::before {
+        top: 110% !important;
+    }
+
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 35px !important;
+        height: 35px !important;
+        top: 53% !important;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 13px !important;
+    }
+}

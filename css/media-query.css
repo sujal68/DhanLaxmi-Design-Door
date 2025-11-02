@@ -185,7 +185,11 @@
     }
 
     #customVideo {
-        width: 360px !important;
+        width: 320px !important;
+    }
+
+    .door-display {
+        width: 91% !important;
     }
 
     .swiper {
@@ -193,7 +197,7 @@
     }
 
     .door-inner {
-        width: 67% !important;
+        width: 76% !important;
         height: 88% !important;
     }
 
@@ -201,10 +205,17 @@
         left: 86% !important;
     }
 
+    .container2 {
+        height: 197vh !important;
+    }
+
     .door-title::before {
         top: 110% !important;
     }
 
+    .right-content {
+        height: 38% !important;
+    }
 
     .swiper-button-next,
     .swiper-button-prev {

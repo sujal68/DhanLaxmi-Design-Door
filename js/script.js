@@ -81,155 +81,158 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener("DOMContentLoaded", function () {
     const video = document.getElementById("customVideo");
 
-    gsap.registerPlugin(ScrollTrigger);
+    if (video && typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
 
-    ScrollTrigger.create({
-        trigger: video,
-        start: "top center",
-        end: "bottom center",
-        onEnter: () => {
-            video.muted = false;
-            video.play();
-        },
-        onLeave: () => {
-            video.pause();
-            video.muted = true;
-        },
-        onEnterBack: () => {
-            video.muted = false;
-            video.play();
-        },
-        onLeaveBack: () => {
-            video.pause();
-            video.muted = true;
-        }
-    });
+        ScrollTrigger.create({
+            trigger: video,
+            start: "top center",
+            end: "bottom center",
+            onEnter: () => {
+                video.muted = false;
+                video.play();
+            },
+            onLeave: () => {
+                video.pause();
+                video.muted = true;
+            },
+            onEnterBack: () => {
+                video.muted = false;
+                video.play();
+            },
+            onLeaveBack: () => {
+                video.pause();
+                video.muted = true;
+            }
+        });
+    }
 });
 
 // ============================================
 // CUSTOM CURSOR EFFECTS (Global)
 // ============================================
-// Hide the default mouse cursor
-// document.body.style.cursor = "none";
-
 const cursor = document.querySelector('.custom-cursor');
 const follower = document.querySelector('.cursor-follower');
 
-let mouseX = 0;
-let mouseY = 0;
-let followerX = 0;
-let followerY = 0;
-let trailTimer = null;
+if (cursor && follower) {
+    let mouseX = 0;
+    let mouseY = 0;
+    let followerX = 0;
+    let followerY = 0;
+    let trailTimer = null;
 
-// Update cursor position
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    // Update cursor position
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
 
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top = mouseY + 'px';
+        cursor.style.left = mouseX + 'px';
+        cursor.style.top = mouseY + 'px';
 
-    // Create trail effect
-    createTrail(mouseX, mouseY);
-});
+        // Create trail effect
+        createTrail(mouseX, mouseY);
+    });
 
-// Smooth follower animation
-function animateFollower() {
-    const distX = mouseX - followerX;
-    const distY = mouseY - followerY;
+    // Smooth follower animation
+    function animateFollower() {
+        const distX = mouseX - followerX;
+        const distY = mouseY - followerY;
 
-    followerX += distX * 0.22;
-    followerY += distY * 0.22;
+        followerX += distX * 0.22;
+        followerY += distY * 0.22;
 
-    follower.style.left = followerX + 'px';
-    follower.style.top = followerY + 'px';
+        follower.style.left = followerX + 'px';
+        follower.style.top = followerY + 'px';
 
-    requestAnimationFrame(animateFollower);
+        requestAnimationFrame(animateFollower);
+    }
+    animateFollower();
+
+    // Trail effect
+    function createTrail(x, y) {
+        if (trailTimer) return;
+
+        trailTimer = setTimeout(() => {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.style.left = x + 'px';
+            trail.style.top = y + 'px';
+            document.body.appendChild(trail);
+
+            setTimeout(() => trail.remove(), 600);
+            trailTimer = null;
+        }, 30);
+    }
+
+    // Hover effects - General elements
+    const hoverElements = document.querySelectorAll('button, a:not(.swiper-slide a), .carousel-a, .customize-a, .glow-btn, .content-menu img');
+
+    hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.classList.add('expand');
+            follower.classList.add('expand');
+        });
+
+        el.addEventListener('mouseleave', () => {
+            cursor.classList.remove('expand');
+            follower.classList.remove('expand');
+        });
+    });
+
+    // Swiper slides hover effect
+    document.querySelectorAll('.swiper-slide').forEach(slide => {
+        slide.addEventListener('mouseenter', () => {
+            cursor.classList.add('expand');
+            follower.classList.add('expand');
+        });
+
+        slide.addEventListener('mouseleave', () => {
+            cursor.classList.remove('expand');
+            follower.classList.remove('expand');
+        });
+    });
+
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', () => {
+        cursor.style.opacity = '0';
+        follower.style.opacity = '0';
+    });
+
+    // Show cursor again when entering
+    document.addEventListener('mouseenter', () => {
+        cursor.style.opacity = '1';
+        follower.style.opacity = '1';
+    });
 }
-animateFollower();
-
-// Trail effect
-function createTrail(x, y) {
-    if (trailTimer) return;
-
-    trailTimer = setTimeout(() => {
-        const trail = document.createElement('div');
-        trail.className = 'cursor-trail';
-        trail.style.left = x + 'px';
-        trail.style.top = y + 'px';
-        document.body.appendChild(trail);
-
-        setTimeout(() => trail.remove(), 600);
-        trailTimer = null;
-    }, 30);
-}
-
-// Hover effects - General elements
-const hoverElements = document.querySelectorAll('button, a:not(.swiper-slide a), .carousel-a, .customize-a, .glow-btn, .content-menu img');
-
-hoverElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        cursor.classList.add('expand');
-        follower.classList.add('expand');
-    });
-
-    el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('expand');
-        follower.classList.remove('expand');
-    });
-});
-
-// Swiper slides hover effect
-document.querySelectorAll('.swiper-slide').forEach(slide => {
-    slide.addEventListener('mouseenter', () => {
-        cursor.classList.add('expand');
-        follower.classList.add('expand');
-    });
-
-    slide.addEventListener('mouseleave', () => {
-        cursor.classList.remove('expand');
-        follower.classList.remove('expand');
-    });
-});
-
-// Hide cursor when leaving window
-document.addEventListener('mouseleave', () => {
-    cursor.style.opacity = '0';
-    follower.style.opacity = '0';
-});
-
-// Show cursor again when entering
-document.addEventListener('mouseenter', () => {
-    cursor.style.opacity = '1';
-    follower.style.opacity = '1';
-});
 
 // ============================================
 // VIDEO 3D TILT EFFECT (Customize Section)
 // ============================================
 const customVideo = document.getElementById('customVideo');
-const videoContainer = customVideo.parentElement;
+if (customVideo) {
+    const videoContainer = customVideo.parentElement;
 
-customVideo.style.transition = 'transform 0.1s ease-out';
-customVideo.style.transformStyle = 'preserve-3d';
+    customVideo.style.transition = 'transform 0.1s ease-out';
+    customVideo.style.transformStyle = 'preserve-3d';
 
-videoContainer.addEventListener('mousemove', (e) => {
-    const rect = customVideo.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    videoContainer.addEventListener('mousemove', (e) => {
+        const rect = customVideo.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
 
-    const rotateX = (y - centerY) / 15;
-    const rotateY = (centerX - x) / 15;
+        const rotateX = (y - centerY) / 15;
+        const rotateY = (centerX - x) / 15;
 
-    customVideo.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-});
+        customVideo.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+    });
 
-videoContainer.addEventListener('mouseleave', () => {
-    customVideo.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-});
+    videoContainer.addEventListener('mouseleave', () => {
+        customVideo.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    });
+}
 
 // ============================================
 // DOOR SHOWCASE CAROUSEL (Live Section)
@@ -241,48 +244,54 @@ const veneerGrid = document.getElementById('veneerGrid');
 const navDots = document.getElementById('navDots');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
-const currentDoorSpan = document.getElementById('currentDoor');
 
 // Create door frames
-for (let i = 1; i <= totalDoors; i++) {
-    const doorFrame = document.createElement('div');
-    doorFrame.className = 'door-frame';
-    if (i === 1) doorFrame.classList.add('active');
-    else if (i === 2) doorFrame.classList.add('right');
-    else doorFrame.classList.add('hidden');
+if (doorDisplay) {
+    for (let i = 1; i <= totalDoors; i++) {
+        const doorFrame = document.createElement('div');
+        doorFrame.className = 'door-frame';
+        if (i === 1) doorFrame.classList.add('active');
+        else if (i === 2) doorFrame.classList.add('right');
+        else doorFrame.classList.add('hidden');
 
-    doorFrame.innerHTML = `
-    <div class="door-inner" style="background-image: url('images/live (${i}).JPEG')"></div>
-    <div class="door-handle"></div>
-  `;
-    doorDisplay.appendChild(doorFrame);
+        doorFrame.innerHTML = `
+        <div class="door-inner" style="background-image: url('images/live (${i}).JPEG')"></div>
+        <div class="door-handle"></div>
+      `;
+        doorDisplay.appendChild(doorFrame);
+    }
 }
 
 // Create veneer samples
-for (let i = 1; i <= totalDoors; i++) {
-    const sample = document.createElement('div');
-    sample.className = 'veneer-sample';
-    if (i === 1) sample.classList.add('active');
-    sample.style.backgroundImage = `url('images/live (${i}).JPEG')`;
-    sample.dataset.door = i - 1;
-    veneerGrid.appendChild(sample);
+if (veneerGrid) {
+    for (let i = 1; i <= totalDoors; i++) {
+        const sample = document.createElement('div');
+        sample.className = 'veneer-sample';
+        if (i === 1) sample.classList.add('active');
+        sample.style.backgroundImage = `url('images/live (${i}).JPEG')`;
+        sample.dataset.door = i - 1;
+        veneerGrid.appendChild(sample);
+    }
 }
 
 // Create navigation dots
-const maxDots = Math.min(10, totalDoors);
-for (let i = 0; i < maxDots; i++) {
-    const dot = document.createElement('div');
-    dot.className = 'dot';
-    if (i === 0) dot.classList.add('active');
-    dot.dataset.index = i;
-    navDots.appendChild(dot);
+if (navDots) {
+    const maxDots = Math.min(10, totalDoors);
+    for (let i = 0; i < maxDots; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        if (i === 0) dot.classList.add('active');
+        dot.dataset.index = i;
+        navDots.appendChild(dot);
+    }
 }
 
 const doors = document.querySelectorAll('.door-frame');
 const veneerSamples = document.querySelectorAll('.veneer-sample');
 const dots = document.querySelectorAll('.dot');
+const maxDots = Math.min(10, totalDoors);
 
-// Update doors function
+// Update doors function - FIXED VERSION
 function updateDoors(newIndex) {
     if (newIndex < 0) newIndex = totalDoors - 1;
     if (newIndex >= totalDoors) newIndex = 0;
@@ -316,7 +325,12 @@ function updateDoors(newIndex) {
         });
     }
 
-    currentDoorSpan.textContent = newIndex + 1;
+    // Update counter only if element exists
+    const currentDoorSpan = document.getElementById('currentDoor');
+    if (currentDoorSpan) {
+        currentDoorSpan.textContent = newIndex + 1;
+    }
+
     currentIndex = newIndex;
 }
 
@@ -338,14 +352,18 @@ dots.forEach(dot => {
 });
 
 // Previous button
-prevBtn.addEventListener('click', () => {
-    updateDoors(currentIndex - 1);
-});
+if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+        updateDoors(currentIndex - 1);
+    });
+}
 
 // Next button
-nextBtn.addEventListener('click', () => {
-    updateDoors(currentIndex + 1);
-});
+if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+        updateDoors(currentIndex + 1);
+    });
+}
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
@@ -385,25 +403,27 @@ const selectedFlag = document.getElementById('selectedFlag');
 const selectedCode = document.getElementById('selectedCode');
 let currentCountryCode = '+91';
 
-countrySelector.addEventListener('click', (e) => {
-    e.stopPropagation();
-    countryMenu.classList.toggle('active');
-});
+if (countrySelector && countryMenu) {
+    countrySelector.addEventListener('click', (e) => {
+        e.stopPropagation();
+        countryMenu.classList.toggle('active');
+    });
 
-document.addEventListener('click', () => {
-    countryMenu.classList.remove('active');
-});
-
-document.querySelectorAll('.country-option').forEach(option => {
-    option.addEventListener('click', () => {
-        const flag = option.dataset.flag;
-        const code = option.dataset.code;
-        selectedFlag.textContent = flag;
-        selectedCode.textContent = code;
-        currentCountryCode = code;
+    document.addEventListener('click', () => {
         countryMenu.classList.remove('active');
     });
-});
+
+    document.querySelectorAll('.country-option').forEach(option => {
+        option.addEventListener('click', () => {
+            const flag = option.dataset.flag;
+            const code = option.dataset.code;
+            selectedFlag.textContent = flag;
+            selectedCode.textContent = code;
+            currentCountryCode = code;
+            countryMenu.classList.remove('active');
+        });
+    });
+}
 
 // Ripple Effect
 document.querySelectorAll('.btn, .submit-btn').forEach(btn => {
@@ -429,229 +449,173 @@ const form = document.getElementById('enquiryForm');
 const submitBtn = document.getElementById('submitBtn');
 const successMessage = document.getElementById('successMessage');
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+if (form && submitBtn) {
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-    // Validate all fields
-    let isValid = true;
+        // Validate all fields
+        let isValid = true;
 
-    const fullName = document.getElementById('fullName');
-    const mobileNumber = document.getElementById('mobileNumber');
-    const emailAddress = document.getElementById('emailAddress');
-    const cityLocation = document.getElementById('cityLocation');
-    const category = document.getElementById('category');
-    const message = document.getElementById('message');
+        const fullName = document.getElementById('fullName');
+        const mobileNumber = document.getElementById('mobileNumber');
+        const emailAddress = document.getElementById('emailAddress');
+        const cityLocation = document.getElementById('cityLocation');
+        const category = document.getElementById('category');
+        const message = document.getElementById('message');
 
-    // Reset errors
-    document.querySelectorAll('.error-message').forEach(msg => msg.classList.remove('active'));
-    document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(input => input.classList.remove('error'));
+        // Reset errors
+        document.querySelectorAll('.error-message').forEach(msg => msg.classList.remove('active'));
+        document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(input => input.classList.remove('error'));
 
-    // Validate Full Name
-    if (fullName.value.trim() === '') {
-        document.getElementById('nameError').classList.add('active');
-        fullName.classList.add('error');
-        isValid = false;
-    }
+        // Validate Full Name
+        if (fullName.value.trim() === '') {
+            document.getElementById('nameError').classList.add('active');
+            fullName.classList.add('error');
+            isValid = false;
+        }
 
-    // Validate Mobile Number
-    if (mobileNumber.value.trim() === '' || mobileNumber.value.length < 10) {
-        document.getElementById('phoneError').classList.add('active');
-        mobileNumber.classList.add('error');
-        isValid = false;
-    }
+        // Validate Mobile Number
+        if (mobileNumber.value.trim() === '' || mobileNumber.value.length < 10) {
+            document.getElementById('phoneError').classList.add('active');
+            mobileNumber.classList.add('error');
+            isValid = false;
+        }
 
-    // Validate Email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(emailAddress.value.trim())) {
-        document.getElementById('emailError').classList.add('active');
-        emailAddress.classList.add('error');
-        isValid = false;
-    }
+        // Validate Email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailAddress.value.trim())) {
+            document.getElementById('emailError').classList.add('active');
+            emailAddress.classList.add('error');
+            isValid = false;
+        }
 
-    // Validate City
-    if (cityLocation.value.trim() === '') {
-        document.getElementById('cityError').classList.add('active');
-        cityLocation.classList.add('error');
-        isValid = false;
-    }
+        // Validate City
+        if (cityLocation.value.trim() === '') {
+            document.getElementById('cityError').classList.add('active');
+            cityLocation.classList.add('error');
+            isValid = false;
+        }
 
-    // Validate Category
-    if (category.value === '') {
-        document.getElementById('categoryError').classList.add('active');
-        category.classList.add('error');
-        isValid = false;
-    }
+        // Validate Category
+        if (category.value === '') {
+            document.getElementById('categoryError').classList.add('active');
+            category.classList.add('error');
+            isValid = false;
+        }
 
-    // Validate Message
-    if (message.value.trim() === '') {
-        document.getElementById('messageError').classList.add('active');
-        message.classList.add('error');
-        isValid = false;
-    }
+        // Validate Message
+        if (message.value.trim() === '') {
+            document.getElementById('messageError').classList.add('active');
+            message.classList.add('error');
+            isValid = false;
+        }
 
-    if (!isValid) return;
+        if (!isValid) return;
 
-    // Disable button
-    submitBtn.disabled = true;
-    submitBtn.querySelector('span').textContent = 'Sending...';
+        // Disable button
+        submitBtn.disabled = true;
+        submitBtn.querySelector('span').textContent = 'Sending...';
 
-    // Prepare form data
-    const formData = {
-        fullName: fullName.value.trim(),
-        mobile: currentCountryCode + ' ' + mobileNumber.value.trim(),
-        email: emailAddress.value.trim(),
-        city: cityLocation.value.trim(),
-        category: category.value,
-        message: message.value.trim(),
-        timestamp: new Date().toLocaleString()
-    };
+        // Prepare form data
+        const formData = {
+            fullName: fullName.value.trim(),
+            mobile: currentCountryCode + ' ' + mobileNumber.value.trim(),
+            email: emailAddress.value.trim(),
+            city: cityLocation.value.trim(),
+            category: category.value,
+            message: message.value.trim(),
+            timestamp: new Date().toLocaleString()
+        };
 
-    // Send to FormSubmit.co (free email service)
-    try {
-        const response = await fetch('https://formsubmit.co/ajax/sujalkidecha68@gmail.com', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                _subject: 'New Enquiry - DhanLxmi Doors',
-                _template: 'table',
-                Name: formData.fullName,
-                Mobile: formData.mobile,
-                Email: formData.email,
-                'City/Location': formData.city,
-                Category: formData.category,
-                Message: formData.message,
-                'Submitted On': formData.timestamp
-            })
-        });
+        // Send to FormSubmit.co (free email service)
+        try {
+            const response = await fetch('https://formsubmit.co/ajax/sujalkidecha68@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _subject: 'New Enquiry - DhanLxmi Doors',
+                    _template: 'table',
+                    Name: formData.fullName,
+                    Mobile: formData.mobile,
+                    Email: formData.email,
+                    'City/Location': formData.city,
+                    Category: formData.category,
+                    Message: formData.message,
+                    'Submitted On': formData.timestamp
+                })
+            });
 
-        if (response.ok) {
-            // Show success message
-            successMessage.classList.add('active');
-            form.reset();
+            if (response.ok) {
+                // Show success message
+                successMessage.classList.add('active');
+                form.reset();
 
-            // Reset button
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.querySelector('span').textContent = 'Submit';
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('active');
+                }, 5000);
+            } else {
+                throw new Error('Failed to submit');
+            }
+        } catch (error) {
+            alert('Something went wrong. Please try again or contact us directly.');
             submitBtn.disabled = false;
             submitBtn.querySelector('span').textContent = 'Submit';
-
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                successMessage.classList.remove('active');
-            }, 5000);
-        } else {
-            throw new Error('Failed to submit');
         }
-    } catch (error) {
-        alert('Something went wrong. Please try again or contact us directly.');
-        submitBtn.disabled = false;
-        submitBtn.querySelector('span').textContent = 'Submit';
-    }
-});
+    });
+}
 
 // dropdown 
-// FIXED DROPDOWN JAVASCRIPT
 const dropdownSelected = document.getElementById("dropdownSelected");
 const dropdownMenu = document.getElementById("dropdownMenu");
 const dropdownText = document.getElementById("dropdownText");
 const categoryInput = document.getElementById("category");
 
-// Toggle dropdown open/close
-dropdownSelected.addEventListener("click", (e) => {
-    e.stopPropagation(); // Prevent event from bubbling
-    dropdownMenu.classList.toggle("active");
-    dropdownSelected.classList.toggle("active"); // For arrow rotation
-});
-
-// Select option and close dropdown
-document.querySelectorAll(".dropdown-option").forEach(option => {
-    option.addEventListener("click", (e) => {
-        e.stopPropagation(); // Prevent closing immediately
-        const value = option.getAttribute("data-value");
-        dropdownText.textContent = value;
-        categoryInput.value = value;
-
-        // Remove active classes
-        dropdownMenu.classList.remove("active");
-        dropdownSelected.classList.remove("active");
-
-        console.log("Selected:", value); // For debugging
+if (dropdownSelected && dropdownMenu) {
+    // Toggle dropdown open/close
+    dropdownSelected.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdownMenu.classList.toggle("active");
+        dropdownSelected.classList.toggle("active");
     });
-});
 
-// Close dropdown when clicking outside
-document.addEventListener("click", (e) => {
-    if (!dropdownSelected.contains(e.target) && !dropdownMenu.contains(e.target)) {
-        dropdownMenu.classList.remove("active");
-        dropdownSelected.classList.remove("active");
-    }
-});
+    // Select option and close dropdown
+    document.querySelectorAll(".dropdown-option").forEach(option => {
+        option.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const value = option.getAttribute("data-value");
+            dropdownText.textContent = value;
+            categoryInput.value = value;
 
-gsap.registerPlugin(ScrollTrigger);
+            dropdownMenu.classList.remove("active");
+            dropdownSelected.classList.remove("active");
+        });
+    });
 
-const counters = document.querySelectorAll(".counter");
-
-counters.forEach(counter => {
-    let target = +counter.getAttribute("data-target");
-
-    gsap.fromTo(counter,
-        { innerText: 0 },
-        {
-            innerText: target,
-            duration: 2,
-            snap: { innerText: 1 },
-            scrollTrigger: {
-                trigger: counter,
-                start: "top 80%",
-                toggleActions: "play none none none"
-            },
-            onUpdate: function () {
-                counter.innerText = Math.ceil(counter.innerText);
-            }
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+        if (!dropdownSelected.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.remove("active");
+            dropdownSelected.classList.remove("active");
         }
-    );
-});
+    });
+}
 
-// gsap.registerPlugin(ScrollTrigger);
-
-// gsap.from(".form-side", {
-//     opacity: 0,
-//     y: 100,
-//     duration: 1.3,
-//     ease: "power3.out",
-//     scrollTrigger: {
-//         trigger: ".form-side",
-//         start: "top 85%", // jab form screen me aaye
-//     }
-// });
-
-// const formCard = document.querySelector('.form-side');
-
-// formCard.addEventListener('mousemove', (e) => {
-//     const rect = formCard.getBoundingClientRect();
-//     const x = e.clientX - rect.left;
-//     const y = e.clientY - rect.top;
-//     const rotateY = ((x / rect.width) - 0.5) * 15;
-//     const rotateX = ((y / rect.height) - 0.5) * -15;
-
-//     formCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-// });
-
-// formCard.addEventListener('mouseleave', () => {
-//     formCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
-// });
-
-
-// =====================
 // about us counter animation on scroll
 const counter = document.querySelectorAll('.stat-number');
-let counterStarted = false; // to prevent replay
+let counterStarted = false;
 
 const startCounting = () => {
     counter.forEach(counter => {
         const target = +counter.getAttribute('data-target');
-        const duration = 20000; // total time for all counter to finish (ms)
+        const duration = 2000;
         const frameRate = 60;
         const totalFrames = Math.round(duration / (1000 / frameRate));
         const increment = target / totalFrames;
@@ -676,27 +640,25 @@ const startCounting = () => {
 };
 
 // intersection observer logic
-const observer = new IntersectionObserver(entries => {
+const counterObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting && !counterStarted) {
             startCounting();
-            counterStarted = true; // prevent it from running again
+            counterStarted = true;
         }
     });
 }, {
-    threshold: 0.5 // section should be 50% visible before animation starts
+    threshold: 0.5
 });
 
 // observe the stats container
 const statsSection = document.querySelector('.stats-container');
-if (statsSection) observer.observe(statsSection);
+if (statsSection) counterObserver.observe(statsSection);
 
-// wow animateion ======================
-new WOW().init();
-
-// footer 
-// Initialize WOW.js
-new WOW().init();
+// wow animation
+if (typeof WOW !== 'undefined') {
+    new WOW().init();
+}
 
 // Ripple effect for newsletter button
 const newsletterBtn = document.querySelector('.newsletter-btn');
@@ -742,4 +704,120 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// loader 
+// ============================================
+// SHOW/HIDE FLOATING BUTTON BASED ON LIVE SECTION VISIBILITY
+// ============================================
+const floatingBtn = document.querySelector('.mobile-veneer-trigger');
+const liveSection = document.querySelector('.live');
+
+if (floatingBtn && liveSection) {
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                floatingBtn.classList.add('show');
+            } else {
+                floatingBtn.classList.remove('show');
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
+    });
+
+    sectionObserver.observe(liveSection);
+}
+
+// ============================================
+// MOBILE OFFCANVAS VENEER SELECTION
+// ============================================
+const mobileVeneerGrid = document.getElementById('mobileVeneerGrid');
+const veneerOffcanvas = document.getElementById('veneerOffcanvas');
+
+if (mobileVeneerGrid && veneerOffcanvas) {
+    // Create mobile veneer items dynamically
+    for (let i = 1; i <= totalDoors; i++) {
+        const item = document.createElement('div');
+        item.className = 'mobile-veneer-item';
+        if (i === 1) item.classList.add('selected');
+        item.innerHTML = `<img src="images/live (${i}).JPEG" alt="Veneer Design ${i}" loading="lazy">`;
+        item.dataset.door = i - 1;
+        mobileVeneerGrid.appendChild(item);
+    }
+
+    // Get all mobile veneer items
+    const mobileVeneerItems = document.querySelectorAll('.mobile-veneer-item');
+
+    // Click event on mobile veneer items
+    mobileVeneerItems.forEach(item => {
+        item.addEventListener('click', function () {
+            // Haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+
+            // Remove selected from all
+            mobileVeneerItems.forEach(i => i.classList.remove('selected'));
+
+            // Add selected to clicked
+            this.classList.add('selected');
+
+            // Get door index
+            const doorIndex = parseInt(this.dataset.door);
+
+            // Update main door display
+            updateDoors(doorIndex);
+
+            // Sync with desktop veneer
+            veneerSamples.forEach((sample, index) => {
+                sample.classList.toggle('active', index === doorIndex);
+            });
+
+            // Auto close offcanvas
+            setTimeout(() => {
+                const bsOffcanvas = bootstrap.Offcanvas.getInstance(veneerOffcanvas);
+                if (bsOffcanvas) {
+                    bsOffcanvas.hide();
+                }
+            }, 700);
+        });
+    });
+
+    // Sync: Desktop veneer click → Update mobile
+    veneerSamples.forEach((sample, index) => {
+        sample.addEventListener('click', () => {
+            mobileVeneerItems.forEach(item => {
+                if (parseInt(item.dataset.door) === index) {
+                    item.classList.add('selected');
+                } else {
+                    item.classList.remove('selected');
+                }
+            });
+        });
+    });
+
+    // Sync: Prev/Next buttons → Update mobile
+    const syncMobile = () => {
+        setTimeout(() => {
+            mobileVeneerItems.forEach((item, index) => {
+                item.classList.toggle('selected', index === currentIndex);
+            });
+        }, 150);
+    };
+
+    if (prevBtn) prevBtn.addEventListener('click', syncMobile);
+    if (nextBtn) nextBtn.addEventListener('click', syncMobile);
+
+    // Sync: Dots → Update mobile
+    dots.forEach(dot => {
+        dot.addEventListener('click', syncMobile);
+    });
+
+    // Offcanvas events
+    veneerOffcanvas.addEventListener('show.bs.offcanvas', () => {
+        document.body.style.overflow = 'hidden';
+    });
+
+    veneerOffcanvas.addEventListener('hidden.bs.offcanvas', () => {
+        document.body.style.overflow = '';
+    });
+}

@@ -46,7 +46,6 @@ li {
 
 .logo {
   position: relative;
-  /* Anchor for pseudo-element */
   display: inline-block;
 }
 
@@ -200,9 +199,7 @@ hr {
 
 .headertwo2 {
   transform: translateY(-100%);
-  /* Initially hide the header */
   transition: transform 0.3s ease-out;
-  /* Smooth transition */
   position: fixed;
   width: 100%;
   top: 0;
@@ -641,7 +638,6 @@ nav ul li:hover .mega-menu {
 .container2 {
   height: 100vh;
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   padding: 0px 20px;
   position: relative;
@@ -901,7 +897,6 @@ nav ul li:hover .mega-menu {
   height: 100%;
   background-size: cover;
   background-position: center;
-  /* border-radius: 6px; */
   position: relative;
   overflow: hidden;
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.2);
@@ -979,10 +974,6 @@ nav ul li:hover .mega-menu {
 
 /* Tablet */
 @media (max-width: 1024px) {
-  /* .showcase {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  } */
 
   .left-content h1 {
     font-size: 2.2rem;
@@ -1027,154 +1018,6 @@ nav ul li:hover .mega-menu {
   }
 }
 
-/* Mobile */
-/* @media (max-width: 768px) {
-  .container {
-    padding: 15px;
-  }
-
-  .showcase {
-    gap: 30px;
-  }
-
-  .left-content {
-    padding: 15px 10px;
-  }
-
-  .left-content h1 {
-    font-size: 1.8rem;
-  }
-
-  .left-content p {
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-  }
-
-  .title-decorative::before,
-  .title-decorative::after {
-    width: 40px;
-  }
-
-  .veneer-grid {
-    gap: 8px;
-    grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
-    margin-bottom: 20px;
-  }
-
-  .veneer-sample {
-    width: 55px;
-    height: 55px;
-    border-radius: 10px;
-  }
-
-  .veneer-sample::after {
-    font-size: 18px;
-    width: 28px;
-    height: 28px;
-  }
-
-  .door-display {
-    height: 380px;
-  }
-
-  .door-frame {
-    width: 200px;
-    height: 360px;
-    padding: 12px;
-  }
-
-  .door-frame.left {
-    transform: translateX(-240px) scale(0.65) rotateY(15deg);
-  }
-
-  .door-frame.right {
-    transform: translateX(200px) scale(0.65) rotateY(-15deg);
-  }
-
-  .door-handle {
-    width: 10px;
-    height: 70px;
-    right: 18px;
-  }
-
-  .door-handle::before {
-    width: 20px;
-    height: 12px;
-  }
-
-  .nav-controls {
-    bottom: -60px;
-    gap: 15px;
-  }
-
-  .nav-arrow {
-    width: 35px;
-    height: 35px;
-    font-size: 16px;
-  }
-
-  .dot {
-    width: 8px;
-    height: 8px;
-  }
-
-  .door-counter {
-    top: -45px;
-    font-size: 0.9rem;
-    padding: 7px 18px;
-  }
-
-  .enquire-btn {
-    padding: 12px 35px;
-    font-size: 0.85rem;
-  }
-} */
-
-/* Small Mobile */
-/* @media (max-width: 480px) {
-  .left-content h1 {
-    font-size: 1.5rem;
-  }
-
-  .left-content p {
-    font-size: 0.85rem;
-  }
-
-  .veneer-sample {
-    width: 50px;
-    height: 50px;
-  }
-
-  .door-display {
-    height: 340px;
-  }
-
-  .door-frame {
-    width: 180px;
-    height: 320px;
-    padding: 10px;
-  }
-
-  .door-frame.left {
-    transform: translateX(-210px) scale(0.6) rotateY(12deg);
-  }
-
-  .door-frame.right {
-    transform: translateX(180px) scale(0.6) rotateY(-12deg);
-  }
-
-  .nav-arrow {
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-  }
-
-  .enquire-btn {
-    padding: 10px 30px;
-    font-size: 0.8rem;
-  }
-} */
-
 /* FORM SECTION ============ */
 .contact-section {
   max-width: 1200px;
@@ -1183,7 +1026,6 @@ nav ul li:hover .mega-menu {
   grid-template-columns: 0.9fr 1fr;
   gap: 0;
   background: white;
-  /* background: url(/images/banner-1.png); */
   border-radius: 24px;
   overflow: hidden;
   position: relative;
@@ -1402,17 +1244,6 @@ nav ul li:hover .mega-menu {
   background: url(/images/banner-1.png);
 }
 
-/* .form-side::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(255, 99, 71, 0.1) 0%, transparent 70%);
-  animation: float 6s ease-in-out infinite;
-} */
-
 .form-header {
   text-align: center;
   margin-bottom: 25px;
@@ -1570,7 +1401,6 @@ nav ul li:hover .mega-menu {
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   max-height: 200px;
-  /* overflow-y: hidden; */
   z-index: 100;
   display: none;
   width: 250px;
@@ -1830,7 +1660,6 @@ nav ul li:hover .mega-menu {
   overflow-y: auto;
   z-index: 1000;
   display: none;
-  /* Keep this */
   transform: translateY(-10px);
   opacity: 0;
   transition: all 0.3s ease;
@@ -1909,12 +1738,9 @@ nav ul li:hover .mega-menu {
 .stats-container {
   display: flex;
   justify-content: center;
-  /* Center horizontally */
   align-items: center;
   flex-wrap: nowrap;
-  /* Prevent wrapping */
   gap: 60px;
-  /* Space between counters */
   margin-top: 40px;
 }
 
@@ -2365,5 +2191,297 @@ ul {
 
   .newsletter-form {
     flex-direction: column;
+  }
+}
+
+/* offcanvas  */
+/* ============================================ */
+/* MOBILE OFFCANVAS VENEER SELECTION */
+/* ============================================ */
+
+/* Desktop Veneer Grid - Mobile me hide */
+@media (max-width: 991px) {
+  .desktop-veneer-grid {
+    display: none !important;
+  }
+}
+
+/* Mobile Veneer Trigger Button */
+.mobile-veneer-trigger {
+  display: none;
+  width: 100%;
+  max-width: 320px;
+  margin: 30px auto 20px;
+  padding: 15px 25px;
+  background: linear-gradient(135deg, #ff6347, #ff4500);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(255, 99, 71, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-veneer-trigger::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.mobile-veneer-trigger:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+.mobile-veneer-trigger i {
+  font-size: 22px;
+}
+
+.mobile-veneer-trigger:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 991px) {
+  .mobile-veneer-trigger {
+    display: flex;
+  }
+}
+
+/* Offcanvas Styling */
+.veneer-offcanvas {
+  height: 75vh !important;
+  border-radius: 25px 25px 0 0 !important;
+  background: linear-gradient(180deg, #ffffff 0%, #fff8f5 100%) !important;
+  box-shadow: 0 -10px 50px rgba(0, 0, 0, 0.2) !important;
+}
+
+.veneer-offcanvas .offcanvas-header {
+  background: linear-gradient(135deg, #ff6347, #ff4500);
+  padding: 20px 25px;
+  border-radius: 25px 25px 0 0;
+  border: none;
+}
+
+.veneer-offcanvas .offcanvas-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.5px;
+}
+
+.veneer-offcanvas .offcanvas-title i {
+  font-size: 24px;
+}
+
+.veneer-offcanvas .btn-close {
+  /* background: rgba(255, 255, 255, 0.3); */
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  padding: 8px;
+  opacity: 1;
+  transition: all 0.3s ease;
+  /* filter: brightness(0) invert(1); */
+}
+
+.veneer-offcanvas .btn-close:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: rotate(90deg);
+}
+
+.veneer-offcanvas .offcanvas-body {
+  padding: 25px 20px;
+  overflow-y: auto;
+}
+
+/* Custom Scrollbar for Offcanvas */
+.veneer-offcanvas .offcanvas-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.veneer-offcanvas .offcanvas-body::-webkit-scrollbar-track {
+  background: rgba(255, 99, 71, 0.1);
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.veneer-offcanvas .offcanvas-body::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #ff6347, #ff4500);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.veneer-offcanvas .offcanvas-body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ff4500, #ff6347);
+}
+
+/* Mobile Veneer Grid in Offcanvas */
+.mobile-veneer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+  gap: 15px;
+  padding-bottom: 20px;
+}
+
+.mobile-veneer-item {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  aspect-ratio: 1;
+  border: 3px solid transparent;
+  background: white;
+}
+
+.mobile-veneer-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.mobile-veneer-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.mobile-veneer-item:active {
+  transform: scale(0.95);
+}
+
+.mobile-veneer-item:active img {
+  transform: scale(1.15);
+}
+
+.mobile-veneer-item:active::before {
+  opacity: 1;
+}
+
+/* Selected State */
+.mobile-veneer-item.selected {
+  border-color: #ff6347;
+  box-shadow: 0 8px 30px rgba(255, 99, 71, 0.5);
+  transform: translateY(-5px);
+  animation: selectedBounce 0.5s ease;
+}
+
+@keyframes selectedBounce {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  40% {
+    transform: translateY(-8px) scale(1.05);
+  }
+
+  60% {
+    transform: translateY(-3px) scale(1.02);
+  }
+
+  100% {
+    transform: translateY(-5px) scale(1);
+  }
+}
+
+.mobile-veneer-item.selected img {
+  transform: scale(1.05);
+}
+
+/* Checkmark Badge */
+.mobile-veneer-item.selected::after {
+  content: '✓';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: linear-gradient(135deg, #ff6347, #ff4500);
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  box-shadow: 0 4px 15px rgba(255, 99, 71, 0.6);
+  border: 3px solid white;
+  animation: checkmarkPop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 2;
+}
+
+@keyframes checkmarkPop {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+
+  70% {
+    transform: scale(1.2) rotate(10deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .mobile-veneer-grid {
+    grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+    gap: 12px;
+  }
+
+  .veneer-offcanvas {
+    height: 70vh !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-veneer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .mobile-veneer-trigger {
+    max-width: 280px;
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+
+  .veneer-offcanvas .offcanvas-title {
+    font-size: 18px;
+  }
+}
+
+/* Small Screens */
+@media (max-width: 360px) {
+  .mobile-veneer-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

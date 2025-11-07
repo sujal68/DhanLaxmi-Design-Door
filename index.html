@@ -169,7 +169,7 @@
           </a>
           <nav class="collapse navbar-collapse d-lg-none" id="tog">
             <ul class="navbar-nav ps-0  ">
-              <li class=""><a href="javascript:void(0)" href="#home">Home</a></li>
+              <li class=""><a href="#home">Home</a></li>
               <li class="ms-4"><a href="#about">About Us</a></li>
               <li class="ms-4"><a href="#customize">Costomize</a></li>
               <li class="ms-4"><a href="#colletion">Door Designs<i class="ri-arrow-down-s-line"></i></a>
@@ -414,29 +414,33 @@
     </section>
 
     <!-- live section  -->
+    <!-- live section  -->
     <section id="customize" class="live" style="overflow-x: hidden; overflow-y: hidden;">
       <div class="container2">
         <div class="showcase">
           <div class="left-content">
-            <div class="title-decorative wow animate__animated animate__fadeInDown
-">
+            <div class="title-decorative wow animate__animated animate__fadeInDown">
               <h2>Something for every style</h2>
             </div>
             <p class="wow animate__animated animate__fadeInDown">Create a door that is truly yours. Choose between a
               wide range of Veneers.</p>
 
-            <div class="veneer-grid wow animate__animated animate__fadeInUp
-" id="veneerGrid"></div>
+            <!-- Desktop Veneer Grid (Mobile me hide ho jayega) -->
+            <div class="veneer-grid desktop-veneer-grid wow animate__animated animate__fadeInUp" id="veneerGrid"></div>
 
-            <!-- <button class="enquire-btn">Enquire Now</button> -->
-            <a href="javascript:void(0)" class="enquire-btn ripple wow animate__animated animate__fadeInUp
-">
+            <!-- Mobile: Button to Open Offcanvas -->
+            <button class="mobile-veneer-trigger d-lg-none" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#veneerOffcanvas">
+              <i class="ri-paint-brush-line"></i>
+              <span>Choose Veneer Design</span>
+            </button>
+
+            <a href="javascript:void(0)" class="enquire-btn ripple wow animate__animated animate__fadeInUp">
               <span>Enquire Now</span>
             </a>
           </div>
 
-          <div class="right-content wow animate__animated animate__fadeInRight
-">
+          <div class="right-content wow animate__animated animate__fadeInRight">
             <div class="door-display" id="doorDisplay"></div>
             <div class="nav-controls">
               <div class="nav-arrow" id="prevBtn">◄</div>
@@ -446,6 +450,21 @@
           </div>
         </div>
       </div>
+
+      <!-- Mobile Offcanvas with Veneer Grid -->
+      <div class="offcanvas offcanvas-bottom veneer-offcanvas" tabindex="-1" id="veneerOffcanvas">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">
+            <i class="ri-palette-line"></i> Select Veneer Design
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+          <!-- Mobile Veneer Grid (Jo offcanvas me dikhega) -->
+          <div class="mobile-veneer-grid" id="mobileVeneerGrid"></div>
+        </div>
+      </div>
+
     </section>
 
     <!-- About Us Section  -->
